@@ -35,7 +35,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author yaelg
  */
-public class Registrar extends javax.swing.JInternalFrame {
+public class Producto extends javax.swing.JInternalFrame {
     
     private Image data;
     FileInputStream Cargar_Archivo;
@@ -45,7 +45,7 @@ public class Registrar extends javax.swing.JInternalFrame {
     /**
      * Creates new form Registrar
      */
-    public Registrar() {
+    public Producto() {
         initComponents();
         vaciarTabla();
         verDatos();
@@ -183,7 +183,7 @@ public class Registrar extends javax.swing.JInternalFrame {
                     res.close();
             } catch (IOException | SQLException ex) 
                 {
-                    Logger.getLogger(Clases.Registrar.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(Clases.Producto.class.getName()).log(Level.SEVERE, null, ex);
                 }
         return data;
     }
@@ -248,6 +248,9 @@ public class Registrar extends javax.swing.JInternalFrame {
         jTextField5 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+
+        setClosable(true);
+        setResizable(true);
 
         jLabel15.setFont(new java.awt.Font("Decker", 1, 11)); // NOI18N
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -664,7 +667,7 @@ public class Registrar extends javax.swing.JInternalFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel12)
                                 .addGap(345, 345, 345))
-                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 361, Short.MAX_VALUE))
+                            .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 366, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -918,7 +921,7 @@ public class Registrar extends javax.swing.JInternalFrame {
             {
                 JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO GUARDADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Producto.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
     }//GEN-LAST:event_guardarActionPerformed
@@ -961,11 +964,11 @@ public class Registrar extends javax.swing.JInternalFrame {
             pst.setBinaryStream(12, Cargar_Archivo);
             pst.setInt(13, Integer.parseInt(jTextField4.getText()));
             int n = pst.executeUpdate();
-            if (n > 0)
+            if (n > 0) 
             {
                 JOptionPane.showMessageDialog(this, "DATOS ACTUALIZADOS CORRECTAMENTE");
                 limpiar();
-                vaciarTabla();
+                vaciarTabla(); 
                 verDatos();
                 nuevo.setEnabled(true);
                 guardar.setEnabled(false);
@@ -978,8 +981,9 @@ public class Registrar extends javax.swing.JInternalFrame {
         {
             JOptionPane.showMessageDialog(this, "LOS DATOS NO HAN SIDO ACTUALIZADOS CORRECTAMENTE", "Error", JOptionPane.ERROR_MESSAGE);
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(Registrar.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Producto.class.getName()).log(Level.SEVERE, null, ex);
         }
+    
     }//GEN-LAST:event_editarActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
